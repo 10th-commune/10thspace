@@ -1,0 +1,135 @@
+syntax = "proto3";
+package IM.System;
+//import "IM.BaseDefine.proto";
+option java_package = "com.tenth.space.protobuf";
+//option java_outer_classname = "MOGUJIEIMMessage";
+option optimize_for = LITE_RUNTIME;
+
+
+enum SysMsgType{
+	PB3_UNUSE31			= 0x0000;
+	SYS_MSG_BUDDY    = 0x01;
+    SYS_MSG_GROUP    = 0x02;
+    SYS_MSG_BLOG     = 0x03;
+	SYS_MSG_SYSTEM   = 0x04;
+}
+
+enum SysMsgOper{
+	PB3_UNUSE32			= 0x0000;
+	ADD_FRIEND_REQUEST             = 0x01;
+    ADD_FRIEND_AGREE               = 0x02;
+    ADD_FRIEND_DISAGREE            = 0x03;
+	ADD_GROUP_REQUEST              = 0x04;
+    ADD_GROUP_AGREE                = 0x05;
+    ADD_GROUP_DISAGREE             = 0x06;
+	PUSH_SYSTEM_MSG                = 0x10;
+	PUSH_INVITE_ADD_FRIEND_MSG     = 0x11;  //邀请加好友的格式为json数据 -> {"friend_id":,"addition_msg":""}
+	PUSH_INVITE_ADD_GROUP_MSG      = 0x12;  //邀请加群的格式为json数据 -> {"group_id":,"addition_msg":""}
+}
+
+message UnreadSysMsgCnt{
+	 SysMsgType type = 1;
+	 uint32 count = 2;
+}
+
+//sys msg的消息格式
+message IMSysMsgData {
+    //cmd id 0x0B03  
+     string from_id = 1;         //如果type是ADD_GROUP_AGREE,则from_id为group_id。
+     string to_id = 2;
+	 SysMsgOper type = 3;
+     bytes attach_data = 20;     //1.添加好友 response 的格式为json数据 -> {"nick_name":"","avatar_url":"","addition_msg":""}
+	                                     //2.添加群的格式为json数据 -> {"group_id":,"nick_name":"","avatar_url":"","addition_msg":""}
+}
+
+//同意添加好友，同意加群都用此消息
+message IMSendSysMsgReq {
+
+	 string user_id = 1;
+     IMSysMsgData sys_msg = 2;
+     bytes attach_data = 20;
+}
+
+message IMSendSysMsgRsp {
+    
+     string user_id = 1;
+	 uint32 result_code = 2;
+     IMSysMsgData sys_msg = 3;
+     bytes attach_data = 20;
+}
+
+//请求未读的系统消息条目数
+message IMSysMsgUnreadCntReq {
+    
+     string user_id = 1;
+     bytes attach_data = 20;
+}
+
+//返回未读的系统消息条目数
+message IMSysMsgUnreadCntRsp {
+    
+     string user_id = 1;
+    repeated UnreadSysMsgCnt unread_list = 2;
+     bytes attach_data = 20;
+}
+
+message IMGetSysMsgDataReq {
+    
+     string user_id = 1;
+	 SysMsgType type = 2;
+	 uint32 msg_cnt = 3;
+     bytes attach_data = 20;
+}
+
+message IMGetSysMsgDataRsp {
+     string user_id = 1;
+	repeated IMSysMsgData msg_list = 2;
+     bytes attach_data = 20;
+}
+
+//发送消息已读的回应，服务端会删除未读列表
+message IMSysMsgReadDataAck {
+
+    
+     string user_id = 1;
+	 SysMsgType type = 2;
+     bytes attach_data = 20;
+}
+
+
+message StudyTimeInfo{
+	 string user_id = 1;
+	 string nick_name = 2;
+	 string avatar_url = 3;
+	 uint32 start = 4;            
+	 uint32 duration = 5;        
+}
+
+enum StatisticsType{
+	PB3_UNUSE33			= 0x0000;
+    ALL      = 0x0001;
+    DAY      = 0x0002;
+    MONTH    = 0x0003;
+	YEAR     = 0x0004;
+}
+
+//读取学习时间
+message IMSysGetStudyTimeReq{
+    //cmd CID_SYS_GET_STUDY_TIME_REQUEST
+	
+	 string user_id = 1;    
+	 repeated string target_user_id_list = 2;  //size为0 就取所有用户的
+	 StatisticsType statistics_type = 3;
+	 string statistics_param = 4;   // StatisticsType:ALL就传空字符; 日格式‘2016-12-12’, 月格式'2016-12',年格式'2016'
+	 uint32 page = 5;
+	 uint32 page_size = 6;
+	 bytes attach_data = 20;
+}
+
+message IMSysGetStudyTimeRsp{
+    //cmd CID_SYS_GET_STUDY_TIME_RESPONSE
+	
+	 string user_id = 1;
+	repeated StudyTimeInfo studytime_list = 2;
+	 bytes attach_data = 20;
+}

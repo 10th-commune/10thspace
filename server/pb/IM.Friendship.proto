@@ -1,0 +1,101 @@
+syntax = "proto3";
+package IM.Friend;
+import "IM.BaseDefine.proto";
+option java_package = "com.tenth.space.protobuf";
+//option java_outer_classname = "MOGUJIEIMMessage";
+option optimize_for = LITE_RUNTIME;
+
+//SID:     SID_FRIENDSHIP	= 0x0010;		     
+
+//发起添加好友请求，只是请求 CID_FRIEND_SHIP_ADD_REQ = 0x1001;
+//通过好友id或昵称添加均可
+message IMFriendShipAddReq{
+
+	 string myid= 1; //user id
+	 string friend_id = 2; //friend id, not use!
+	 string friend_nickname = 3;//nickname
+	 string attach_msg = 4;//附加消息
+	 bytes 	attach_data = 20;
+}
+
+//添加好友返回好友信息 CID_FRIEND_SHIP_ADD_RES = 0x1002;
+message IMFriendShipAddRsp{
+
+	 string user_id 	= 1;
+	 uint32 result_code = 2; //0 success,1 friend exist; 3 error
+	 string result_string = 3;
+	 IM.BaseDefine.UserInfo friend_info = 4; //可选，添加成功返回好友信息
+	 bytes attach_data = 20;
+}
+
+//添加好友后，通知对方 CID_FRIEND_SHIP_ADD_NOTIFY = 0x1003;
+message IMFriendShipAddNotify{
+	 string from_user_id = 1;
+	 string to_user_id   = 2;
+	 uint32 notify_value = 3;//value:1 请求添加好友:
+	 IM.BaseDefine.UserInfo friend_info = 4; //好友信息
+	 string attach_msg =5;
+	 bytes attach_data = 20;
+}
+
+
+//获取好友列表 CID_FRIEND_SHIP_LIST_REQ	= 0x1004;
+message IMFriendShipListReq{
+
+	 string myid = 1; 
+	 bytes attach_data = 20;
+}
+
+//CID_FRIEND_SHIP_LIST_RES	= 0x1005;
+message IMFriendShipListRsp{
+
+	 string user_id = 1;
+ 	repeated IM.BaseDefine.UserInfo user_list = 2;
+	 bytes attach_data = 20;
+}
+
+//获取好友请求列表 CID_FRIEND_SHIP_GET_UNAGREE_FRIEND_LIST_REQ = 0x1008;
+message IMFriendGetUnAgreeListReq{
+	 string user_id = 1;
+	 bytes attach_data = 20;
+}
+
+//     CID_FRIEND_SHIP_GET_UNAGREE_FRIEND_LIST_RES = 0x1009;
+message IMFriendGetUnAgreeListRsp{
+	 string user_id = 1;
+	repeated IM.BaseDefine.UserInfo user_list = 2;
+	 bytes attach_data = 20;
+}
+
+//更新好友关系 CID_FRIEND_SHIP_UPDATE_RELATION_REQ = 0x1006;
+message IMFriendShipUpdateRelationReq{
+	 string user_id = 1;
+	 string friend_id = 2 ;
+	 uint32 update_opration = 3; //value:1 同意添加好友; value:2 拒绝添加好友;3 delete 删除好友
+	 bytes attach_data = 20;
+}
+
+//CID_FRIEND_SHIP_UPDATE_RELATION_RES = 0x1007;
+message IMFriendShipUpdateRelationRes{
+	 string user_id = 1;
+	 string friend_id = 2;
+	 uint32 update_status = 3; //0 表示同意添加好友;2 拒绝添加好友;3 好友成功删除
+	 bytes  attach_data = 20;
+}
+
+//CID_FRIEND_SHIP_SEARCH_FRIEND_REQ = 0x100a;
+message IMFriendShipSearchReq{	    //查找好友
+	 string user_id = 1;
+	 string user_nick = 2;//用户昵称
+	 string user_name = 3;//用户名
+	 bytes attach_data = 20;
+}
+
+//CID_FRIEND_SHIP_SEARCH_FRIEND_RES =0x100b;
+message IMFriendShipSearchRes{
+	 string user_id = 1;
+	repeated IM.BaseDefine.UserInfo user_list = 2;
+	 bytes attach_data = 20;
+}
+
+

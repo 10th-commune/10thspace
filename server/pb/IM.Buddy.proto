@@ -1,0 +1,297 @@
+syntax = "proto3";
+package IM.Buddy;
+import "IM.BaseDefine.proto";
+option java_package = "com.tenth.space.protobuf";
+//option java_outer_classname = "MOGUJIEIMMessage";
+option optimize_for = LITE_RUNTIME;
+
+//service id   0x0002
+
+message IMRecentContactSessionReq{
+	//cmd id:		0x0201
+	 string user_id = 1;
+	 uint32 latest_update_time = 2;
+	 bytes attach_data = 20;
+}
+
+message IMRecentContactSessionRsp{
+	//cmd id:		0x0202
+	 string user_id = 1;
+	repeated IM.BaseDefine.ContactSessionInfo contact_session_list = 2;
+	 bytes attach_data = 20;
+}
+
+message IMUserStatNotify{
+	//cmd id:		0x0203
+	 IM.BaseDefine.UserStat user_stat = 1;
+}
+
+message IMUsersInfoReq{
+	//cmd id:		0x0204
+	 string user_id = 1;
+	 repeated string user_id_list = 2;
+	 bytes attach_data = 20;
+}
+
+message IMUsersInfoRsp{
+	//cmd id:		0x0205
+	 string user_id = 1;
+	repeated IM.BaseDefine.UserInfo user_info_list = 2;
+	 bytes attach_data = 20;
+}
+
+message IMRemoveSessionReq{
+	//cmd id:		0x0206
+	 string user_id = 1;
+	 IM.BaseDefine.SessionType session_type = 2;
+	 string session_id = 3;
+	 bytes attach_data = 20;
+}
+
+message IMRemoveSessionRsp{
+	//cmd id:		0x0207
+	 string user_id = 1;
+	 uint32 result_code = 2;
+	 IM.BaseDefine.SessionType session_type = 3;
+	 string session_id = 4;
+	 bytes attach_data = 20;
+}
+
+message IMAllUserReq{
+	//cmd id:		0x0208
+	 string user_id = 1;
+	 uint32 latest_update_time = 2;
+	 bytes attach_data = 20;
+}
+
+message IMAllUserRsp{
+	//cmd id:		0x0209
+	 string user_id = 1;
+	 uint32 latest_update_time = 2;
+	repeated IM.BaseDefine.UserInfo user_list = 3;		
+	 bytes attach_data = 20;
+}
+
+message IMUsersStatReq{
+	//cmd id:		0x020a
+	 string user_id = 1;
+	repeated string user_id_list = 2;
+	 bytes attach_data = 20;
+}
+
+message IMUsersStatRsp{
+	//cmd id:		0x020b
+	 string user_id = 1;
+	repeated IM.BaseDefine.UserStat user_stat_list = 2;
+	 bytes attach_data = 20;
+}
+
+message IMChangeAvatarReq{
+	//cmd id:		0x020c
+	 string user_id = 1;
+	 string avatar_url = 2;
+	 bytes attach_data = 20;
+}
+
+message IMChangeAvatarRsp{
+	//cmd id:		0x020d
+	 string user_id = 1;
+	 uint32 result_code = 2;
+	 bytes attach_data = 20;
+}
+
+//只给移动端通知
+message IMPCLoginStatusNotify{
+	//cmd id:		0x020e
+	 string user_id = 1;
+	 IM.BaseDefine.UserStatType login_stat = 2;
+}
+
+ message IMRemoveSessionNotify{
+ 	//cmd id:		0x020f
+ 	 string user_id = 1;
+	 IM.BaseDefine.SessionType session_type = 2;
+	 string session_id = 3;
+ }
+
+message IMDepartmentReq{
+	//cmd id:		0x0210
+	 string user_id = 1;
+	 uint32 latest_update_time = 2;
+	 bytes attach_data = 20;
+}
+
+message IMDepartmentRsp{
+	//cmd id:		0x0211
+	 string user_id = 1;
+	 uint32 latest_update_time = 2;
+	repeated IM.BaseDefine.DepartInfo dept_list = 3;
+	 bytes attach_data = 20;
+}
+
+message IMAvatarChangedNotify {
+
+    //cmd id:		0x02012
+     uint32 changed_user_id = 1;      // 谁修改了avatar
+     string avatar_url = 2;           //
+}
+
+message IMChangeSignInfoReq{
+   //cmd id:		0x0213
+
+     string user_id = 1;
+     string sign_info = 2;
+     bytes attach_data = 20;
+}
+
+message IMChangeSignInfoRsp{
+    //cmd id:		0x0214
+     string user_id = 1;
+     uint32 result_code = 2;
+     string sign_info = 3;      // 此字段服务端用，客户端直接忽略
+     bytes attach_data = 20;
+}
+
+    // 个性签名修改通知（广播）
+message IMSignInfoChangedNotify {
+    //cmd id:		0x0215
+     string changed_user_id = 1;     // 谁修改了个性签名
+     string sign_info = 2;
+}
+
+//查找用户
+message IMSearchUserReq {
+    //cmd id:		0x0216
+    
+     string user_id = 1;
+     string search_user_name = 2;     // 要查询的用户名
+     bytes attach_data = 20;
+}
+
+
+message IMSearchUserRsp {
+    //cmd id:		0x0217
+    string user_id = 1;
+    repeated IM.BaseDefine.UserInfo search_user_list = 2;     // 空表示没查到
+    bytes attach_data = 20;
+}
+
+//关注
+message IMFollowUserReq {
+    //cmd id:		0x0220
+    string user_id = 1;
+    string friend_id = 2;     //要加好友的user_id
+    bytes attach_data = 20;
+}
+
+message IMFollowUserRsp {
+    //cmd id:		0x0221
+	string user_id = 1;
+	uint32 result_code = 2;     
+	bytes attach_data = 20;
+}
+
+//删除好友
+message IMDelFriendReq {
+    //cmd id:		0x0222
+	string user_id = 1;
+	string friend_id = 2;     //发起添加请求的user_id
+	bytes addition_msg = 3;
+	bytes attach_data = 20;
+}
+
+message IMDelFriendRsp {
+    //cmd id:		0x0223
+    
+     string user_id = 1;
+     string friend_id = 2;
+     uint32 result_code = 3;
+     bytes addition_msg = 4;
+     bytes attach_data = 20;
+}
+
+//取消关注
+message IMDelFollowUserReq {
+    //cmd id:		0x0224
+    
+     string user_id = 1;
+     string friend_id = 2;     //要关注用户的user_id
+     bytes attach_data = 20;
+}
+
+message IMDelFollowUserRsp {
+    //cmd id:		0x0225
+    
+     string user_id = 1;
+	 string friend_id = 2;
+     uint32 result_code = 3;     
+     bytes attach_data = 20;
+}
+
+enum StudyState{
+	PB3_UNUSE30			= 0x0000;
+    start      = 0x0011;
+    end        = 0x0012;
+}
+
+//所有在线用户数
+message IMALLOnlineUserCntReq {
+    //cmd id:		0x0228
+    
+     string user_id = 1;
+	 StudyState study_state = 2;
+     bytes attach_data = 20;
+}
+
+message IMALLOnlineUserCntRsp {
+    //cmd id:		0x0229
+    
+     string user_id = 1;
+	 uint32 online_user_cnt = 2;    
+     bytes attach_data = 20;
+}
+
+message IMUpdateUsersInfoReq{
+	//cmd id:		0x0204
+	 string user_id = 1;
+	 IM.BaseDefine.UserInfo user_info = 2;
+	 bytes attach_data = 20;
+}
+
+message IMUpdateUsersInfoRsp{
+	//cmd id:		0x0205
+	 string user_id = 1;
+	 uint32 result_code = 2;
+	 bytes attach_data = 20;
+}
+
+message IMRecommendListReq{
+	//cmd id:		0x0204
+	 string user_id = 1;
+	 uint32 page = 2;
+	 uint32 page_size = 3;
+	 bytes attach_data = 20;
+}
+
+message IMRecommendListRsp{
+	//cmd id:		0x0205
+	repeated string recommend_list = 1;
+	repeated string recommend_nick_list = 2;
+	 bytes attach_data = 20;
+}
+
+//cita add：获取在线用户详情
+message IMGetALLOnlineUserReq {
+    //cmd id:		0x022e
+     string user_id = 1;
+     bytes attach_data = 20;
+}
+
+//cita add: 返回所有在线用户
+message IMGetALLOnlineUserRsp {
+    //cmd id:		0x022f
+     string user_id = 1;
+	 repeated IM.BaseDefine.UserInfo user_list = 2;     // 空表示没查到
+     bytes attach_data = 20;
+}
+

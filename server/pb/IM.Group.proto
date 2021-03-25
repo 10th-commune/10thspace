@@ -1,0 +1,114 @@
+syntax = "proto3";
+package IM.Group;
+import "IM.BaseDefine.proto";
+option java_package = "com.tenth.space.protobuf";
+//option java_outer_classname = "MOGUJIEIMMessage";
+option optimize_for = LITE_RUNTIME;
+
+//service id:0x0004
+
+message IMNormalGroupListReq{
+	//cmd id:			0x0401
+	 string user_id = 1;
+	 bytes attach_data = 20;
+}
+
+message IMNormalGroupListRsp{
+	//cmd id:			0x0402
+	 string user_id = 1;
+	repeated IM.BaseDefine.GroupVersionInfo group_version_list = 2;
+	 bytes attach_data = 20;
+}
+
+message IMGroupInfoListReq{
+	//cmd id:			0x0403
+	string user_id = 1;
+	repeated IM.BaseDefine.GroupVersionInfo group_version_list = 2;
+	bytes attach_data = 20;
+}
+
+message IMGroupInfoListRsp{
+	//cmd id:			0x0404
+	string user_id = 1;
+	repeated IM.BaseDefine.GroupInfo group_info_list = 2;
+	bytes attach_data = 20;
+}
+
+message IMGroupCreateReq{
+	//cmd id:			0x0405
+	 string user_id = 1;
+	 IM.BaseDefine.GroupType group_type = 2;		//默认是创建临时群，且客户端只能创建临时群
+	 string group_name = 3;
+	 string group_avatar = 4;
+	 repeated string member_id_list = 5;
+	 bytes attach_data = 20;
+}
+
+message IMGroupCreateRsp{
+	//cmd id:			0x0406
+	 string user_id = 1;
+	 uint32 result_code = 2;
+	 string group_id = 3;
+	 string group_name = 4;
+	repeated string user_id_list = 5;
+	 bytes attach_data = 20;
+}
+
+message IMGroupChangeMemberReq{
+	//cmd id:			0x0407
+	 string user_id = 1;
+	 IM.BaseDefine.GroupModifyType change_type = 2;
+	 string group_id = 3;
+	 repeated string member_id_list = 4;
+	 uint32 quit = 5;    //  0x22:退群
+	 bytes attach_data = 20;
+}
+
+message IMGroupChangeMemberRsp{
+	//cmd id:			0x0408
+	 string user_id = 1;
+	 IM.BaseDefine.GroupModifyType change_type = 2;
+	 uint32 result_code = 3;
+	 string group_id = 4;
+	 repeated string cur_user_id_list = 5;			//现有的成员id		
+	 repeated string chg_user_id_list = 6;			//变动的成员id,add: 表示添加成功的id,   del: 表示删除的id
+	 bytes attach_data = 20;
+}
+
+message IMGroupShieldReq{
+	//cmd id:			0x0409
+	 string user_id = 1;
+	 string group_id = 2;
+	 uint32 shield_status = 3;
+	 bytes attach_data = 20;
+}
+
+message IMGroupShieldRsp{
+	//cmd id:			0x040a
+	 string user_id = 1;
+	 string group_id = 2;
+	 uint32 result_code = 3;			//0:successed 1:failed
+	 bytes attach_data = 20;
+}
+
+message IMGroupChangeMemberNotify{
+	//cmd id: 			0x040b
+	 string user_id = 1;
+	 IM.BaseDefine.GroupModifyType change_type = 2;
+	 string group_id = 3;
+	repeated string cur_user_id_list = 4;			//现有的成员id
+	repeated string chg_user_id_list = 5;			//add: 表示添加成功的id,   del: 表示删除的id
+}
+
+message IMRecommandGroupListReq{
+	//cmd id:			0x040c
+	string user_id = 1;
+	bytes attach_data = 20;
+}
+
+message IMRecommandGroupListRsp{
+	//cmd id:			0x040d
+	string user_id = 1;
+	repeated IM.BaseDefine.GroupInfo group_info_list = 2;
+	bytes attach_data = 20;
+}

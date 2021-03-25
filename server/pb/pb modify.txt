@@ -1,0 +1,58 @@
+IM.Login.proto：
+message IMLoginReq{
+	//cmd id:		0x0103
+	 string user_id = 1;//lcf:改为string，pubkey
+	 IM.BaseDefine.UserStatType online_status = 2;
+	 IM.BaseDefine.ClientType client_type = 3;
+	 string client_version = 4;
+}
+
+IM.BaseDefine.proto：
+message UserInfo{
+	 string user_id = 1;//lcf:改为string, pubkey
+	 uint32 user_gender = 2; 	//// 用户性别,男：1 女：2 人妖/外星人：0
+	 string user_nick_name = 3;	//绰号
+	 string avatar_url = 4;
+	 uint32 department_id = 5;
+	 string email = 6;
+	 string user_real_name = 7;	//真名
+	 string user_tel = 8;
+	 string user_domain = 9;	//用户名拼音
+     	 uint32 status = 10;        // 0x11:group
+     	 string sign_info = 11;
+     	 uint32 updated = 12;
+	 UserRelationType relation = 13;
+	 uint32 fans_cnt = 14;
+	 string user_address = 15; //cita add:btc address
+	 string user_pubkey = 16; 	//cita add:user pubkey
+}
+
+IM.Buddy.proto:
+//查找用户
+message IMSearchUserReq {
+    //cmd id:		0x0216
+     string user_id = 1;//lcf:改为string, pubkey
+     string search_user_name = 2;     // 要查询的用户名
+     bytes attach_data = 20;
+}
+
+message IMSearchUserRsp {
+    //cmd id:		0x0217
+     string user_id = 1;//lcf:改为string, pubkey
+     repeated IM.BaseDefine.UserInfo search_user_list = 2;     // 空表示没查到
+     bytes attach_data = 20;
+}
+
+IM.Message.proto:
+//service id  0x0003
+message IMMsgData{
+	//cmd id:		0x0301
+	 string from_user_id = 1;//lcf:改为string, pubkey				//消息发送方
+	 string to_session_id = 2;//lcf:改为string, pubkey				//消息接受方
+	 uint32 msg_id = 3;
+	 uint32 create_time = 4; 
+	 IM.BaseDefine.MsgType msg_type = 5;
+	 bytes msg_data = 6;
+	 bytes msg_sig = 7; //lcf:消息的签名数据
+	 bytes attach_data = 20;
+}

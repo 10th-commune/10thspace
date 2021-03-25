@@ -1,0 +1,16 @@
+syntax = "proto3";
+package IM.SwitchService;
+option java_package = "com.tenth.space.protobuf";
+//option java_outer_classname = "MOGUJIEIMMessage";
+option optimize_for = LITE_RUNTIME;
+
+//service id: 0x0006
+
+message IMP2PCmdMsg{
+	//cmd id:		0x0601
+	 string from_user_id = 1;
+	 string to_user_id = 2;
+	 string cmd_msg_data = 3;
+}
+
+
