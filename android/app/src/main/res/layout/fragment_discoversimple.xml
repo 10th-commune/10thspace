@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/tt_progressbar"
+        android:indeterminateDuration="4000"
+        android:visibility="visible" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="13dp"
+        android:background="#f0f0f0"
+        android:text="@string/newFirends"
+        android:gravity="left|center_vertical"
+        android:textColor="#9d9d9d"
+        android:textSize="12dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="2dp"
+         />
+
+    <ListView
+        android:id="@+id/friends_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:listSelector="@android:color/transparent"
+        ></ListView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="13dp"
+        android:background="#f0f0f0"
+        android:text="@string/newGroups"
+        android:gravity="left|center_vertical"
+        android:textColor="#9d9d9d"
+        android:textSize="12dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="2dp"
+        />
+    <ListView
+        android:id="@+id/group_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:listSelector="@android:color/transparent"
+        ></ListView>
+</LinearLayout>

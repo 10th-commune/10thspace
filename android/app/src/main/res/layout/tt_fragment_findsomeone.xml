@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/tt_progressbar"
+        android:indeterminateDuration="4000"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/default_bk"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:id="@+id/bt_search"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/tt_top_search_bg"
+            android:drawableRight="@drawable/tt_top_search"
+            android:drawablePadding="9dp"
+            android:paddingRight="10dp"
+            android:ellipsize="end"
+            android:hint="@string/someone_search"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColorHint="#9a9b9c"
+            android:textSize="14sp"
+            android:imeOptions="actionSearch"
+            ></Button>
+
+        <RelativeLayout
+            android:id="@+id/sys_msg"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <TextView
+                android:id="@+id/sys"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="@string/scanToFind"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/sys_message"
+                android:layout_width="wrap_content"
+                android:minWidth="16dp"
+                android:layout_height="16dp"
+                android:layout_toRightOf="@id/sys"
+                android:background="@drawable/tt_message_notify"
+                android:gravity="center"
+                android:layout_marginLeft="-10dp"
+                android:layout_marginTop="3dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/tt_default_arrow"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tt_divide_line"
+            />
+
+        <RelativeLayout
+            android:id="@+id/smartMatch"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="@string/smartToMatch"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/tt_default_arrow"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tt_divide_line"
+            />
+
+        <RelativeLayout
+            android:id="@+id/randfind"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="@string/randToFind"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/tt_default_arrow"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tt_divide_line"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tt_divide_line"
+            />
+        <RelativeLayout
+            android:id="@+id/settingPage"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="@string/creategroupbyface"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/tt_default_arrow"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tt_divide_line"
+            />
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

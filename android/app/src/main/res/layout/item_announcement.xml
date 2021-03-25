@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:padding="5dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <LinearLayout
+        android:id="@+id/someBody"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="left|center_horizontal"
+        android:scaleType="centerCrop"
+        android:src="@drawable/toux" >
+    </ImageView>
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:text="名字"
+        android:gravity="left|center_vertical"
+        android:textSize="@dimen/sp_12"
+        android:textColor="#9d9d9d"/>
+    </LinearLayout>
+    <View
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:ellipsize="end"
+        android:text="时长："
+        android:gravity="left|center_vertical"
+        android:textSize="12sp"
+        />
+
+
+        <TextView
+    android:id="@+id/duration"
+    android:layout_width="150dp"
+    android:layout_height="26dp"
+    android:ellipsize="end"
+    android:gravity="left|center_vertical"
+        android:layout_gravity="center_vertical"
+    android:textColor="#4d4d4d"
+    android:text="时长"
+    android:textSize="12sp"
+    />
+    <View
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"/>
+</LinearLayout>
+<View
+android:layout_width="match_parent"
+android:layout_height="1px"
+    android:background="@color/blue"/>
+    </LinearLayout>

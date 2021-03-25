@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radiogroup" />
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="@color/custom_bottom"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        >
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"/>
+
+        <RadioButton
+            android:id="@+id/rb_contacts"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:checked="true"
+            android:text="好友"
+            android:textSize="16sp"
+            style="@style/style_RadioButton"
+            android:background="@drawable/selector_text_bottom_line"
+            android:layout_marginBottom="2dp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"/>
+
+        <RadioButton
+            android:id="@+id/rb_attention"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="关注"
+            android:textSize="16sp"
+            style="@style/style_RadioButton"
+            android:background="@drawable/selector_text_bottom_line"
+            android:layout_marginBottom="2dp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            />
+
+        <ImageView
+            android:id="@+id/add_friends"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:visibility="gone"
+            android:padding="10dp"
+            android:src="@drawable/add_friends"
+            />
+    </RadioGroup>
+
+</RelativeLayout>

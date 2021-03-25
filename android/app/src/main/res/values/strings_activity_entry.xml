@@ -1,0 +1,25 @@
+<resources>
+
+    <string name="entry_activity_login">欢迎使用第十空间</string>
+
+    <!-- Strings related to login -->
+    <string name="creatnew">直接创建新账号</string>
+    <string name="importreferralcode">创建新账号(导入推荐码)</string>
+    <string name="importnew">导入新账号</string>
+    <string name="loginold">登录原有账号</string>
+    <string name="starting">启动中...</string>
+    <string name="logining">登录中...</string>
+    <string name="updateing">更新中...</string>
+    <string name="dialog_title">发现新版本</string>
+    <string name="dialog_msg">发现新版本\n\n1.升级界面改版\n2.功能大升级\n3.修复一些已知BUG\n</string>
+    <string name="dialog_confirm">升级</string>
+    <string name="accountCrateOK">账号创建成功</string>
+    <string name="accountCrateFail">账号创建失败</string>
+    <string name="accountImportOk">账号导入成功</string>
+    <string name="accountImportFail">账号导入失败,无法识别的二维码</string>
+    <string name="accountCreateFailWithRid">账号创建失败,无法识别的推荐码</string>
+    <string name="referral_code">推荐码(选填,如有可填)</string>
+    <string name="download_err">网络错误,升级失败</string>>
+
+
+</resources>

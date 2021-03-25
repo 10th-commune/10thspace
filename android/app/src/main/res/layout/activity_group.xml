@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_group"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tenth.space.ui.activity.GroupActivity"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:background="@color/custom_bottom"
+        >
+        <ImageView
+            android:id="@+id/go_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/tt_top_back"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:text="兴趣组"/>
+        <ImageView
+            android:id="@+id/go_add"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@android:drawable/ic_menu_add"
+            android:textColor="@android:color/white"
+            android:gravity="center_vertical"
+            />
+
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/group_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:background="@color/white"></ListView>
+
+</LinearLayout>

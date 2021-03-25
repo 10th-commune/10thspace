@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tenth.space.ui.widget.message.SystemMsgRenderView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/default_system_text_color"
+    android:orientation="vertical"
+    android:paddingBottom="10dp" >
+
+    <TextView
+        android:id="@+id/system_tip_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/tt_message_title_time_bg"
+        android:paddingBottom="1dp"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:paddingTop="1dp"
+        android:text="系统提示:"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="24sp" >
+    </TextView>
+
+
+</com.tenth.space.ui.widget.message.SystemMsgRenderView>

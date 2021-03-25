@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_dialog"
+    android:layout_width="210dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/shape_circle"
+    android:padding="3dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:indeterminateDrawable="@drawable/tt_progressbar"
+            android:indeterminateDuration="4000"
+            />
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_below="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="网络超时，请重试！"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:gravity="center"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_gravity="center_vertical"
+        android:background="@color/lightgray"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/bt_close"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="退出"
+            android:textColor="@color/default_black_color"
+            android:background="@color/white"
+            />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/lightgray"
+            />
+
+        <Button
+            android:id="@+id/bt_ensure"
+            android:layout_weight="1"
+            android:text="重连"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/default_black_color"
+            android:background="@color/white"/>
+    </LinearLayout>
+
+</LinearLayout>
